@@ -5,9 +5,13 @@ let modelURL = "https://teachablemachine.withgoogle.com/models/oud6RkwWB/"
 let label = "waiting...";
 let confi = 0;
 
+function model_ready() {
+  console.log("Model ready!!!")
+}
+
 // STEP 1: Load the model!
 function preload() {
-  classifier = ml5.imageClassifier(modelURL + 'model.json');
+  classifier = ml5.imageClassifier(modelURL + 'model.json', model_ready);
 }
 
 function setup() {
@@ -36,7 +40,7 @@ function draw() {
   textAlign(CENTER, CENTER);
   fill(255);
   text(label, width / 2, height - 16);
-  text(confi, width - 50, height - 16)
+  text(confi  + "%", width - 50, height - 16)
 }
 
 
